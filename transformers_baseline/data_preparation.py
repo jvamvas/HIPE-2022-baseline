@@ -106,7 +106,7 @@ def align_elements(tokens_to_words_offsets: 'transformers.tokenizers.Encoding',
 
 def prepare_datasets(config: 'argparse.Namespace', tokenizer):
     data = {}
-    for split in ['train', 'eval']:
+    for split in ['train', 'valid', 'eval']:
         if config.__dict__[split + '_path'] or config.__dict__[split + '_url']:
             data[split] = tsv_to_dict(path=config.__dict__[split + '_path'], url=config.__dict__[split + '_url'])
 

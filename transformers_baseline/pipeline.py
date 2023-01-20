@@ -176,8 +176,14 @@ def main(config):
         train(config=config,
               model=model,
               train_dataset=datasets['train'],
-              eval_dataset=datasets['eval'] if config.evaluate_during_training else None,
+              eval_dataset=datasets['valid'] if config.evaluate_during_training else None,
               tokenizer=tokenizer)
+
+    if config.do_hipe_eval or config.do_predict:
+        model = transformers.AutoModelForTokenClassification.from_pretrained(config.model_save_dir,
+                                                                             num_labels=config.num_labels
+                                                                             )
+        model.to(config.device)
 
     if config.do_hipe_eval:
         evaluate_hipe(dataset=datasets['eval'],
