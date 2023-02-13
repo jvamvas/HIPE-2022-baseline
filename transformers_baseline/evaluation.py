@@ -159,7 +159,9 @@ def evaluate_hipe(dataset: 'transformers_baseline.data_preparation.HipeDataset',
                   groundtruth_tsv_path: str = None,
                   groundtruth_tsv_url: str = None,
                   batch_size: int = 8,
-                  do_debug: bool = False):
+                  do_debug: bool = False,
+                  task: str = 'nerc_coarse',
+                  ):
 
     """Performs the entire pipeline to hipe-evaluate a model, i.e. :
         - Getting the model's prediction on a dataset
@@ -197,4 +199,5 @@ def evaluate_hipe(dataset: 'transformers_baseline.data_preparation.HipeDataset',
                        preds_path=preds_path,
                        method='hipe',
                        hipe_script_path=hipe_script_path,
+                       task=task,
                        )

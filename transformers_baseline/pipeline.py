@@ -198,6 +198,7 @@ def main(config):
                       hipe_script_path=config.hipe_script_path,
                       groundtruth_tsv_path=config.eval_path,
                       groundtruth_tsv_url=config.eval_url,
+                      task=('nerc_coarse' if config.labels_column == 'NE-COARSE-LIT' else 'nerc_fine'),
                       )
 
     if config.do_predict:
